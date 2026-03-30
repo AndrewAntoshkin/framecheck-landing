@@ -356,6 +356,7 @@ function UseCases() {
 
 function RiskCategories() {
   const categories = [
+    "Контент иноагентов",
     "Наркотики и наркотические средства",
     "Оружие и боеприпасы",
     "Насилие и жестокость",
