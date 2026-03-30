@@ -12,6 +12,8 @@ import {
   Play,
   ArrowRight,
   ChevronRight,
+  ExternalLink,
+  Scale,
 } from "lucide-react";
 import { ContactForm } from "@/components/landing/contact-form";
 
@@ -107,7 +109,7 @@ function Stats() {
   const stats = [
     { value: "5 мин", label: "на час видео" },
     { value: "12+", label: "категорий рисков" },
-    { value: "98%", label: "точность анализа" },
+    { value: "24/7", label: "без выходных" },
     { value: "×50", label: "быстрее человека" },
   ];
 
@@ -225,6 +227,78 @@ function RiskCategories() {
               <Shield className="w-4 h-4 text-blue-500 shrink-0" />
               <span className="text-sm text-gray-700">{cat}</span>
             </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LegalBasis() {
+  const laws = [
+    {
+      number: "436-ФЗ",
+      title: "О защите детей от информации, причиняющей вред их здоровью и развитию",
+      url: "https://www.consultant.ru/document/cons_doc_LAW_108808/",
+      description: "Возрастная маркировка, ограничения на контент для несовершеннолетних",
+    },
+    {
+      number: "114-ФЗ",
+      title: "О противодействии экстремистской деятельности",
+      url: "https://www.consultant.ru/document/cons_doc_LAW_37867/",
+      description: "Запрет на распространение экстремистских материалов",
+    },
+    {
+      number: "38-ФЗ",
+      title: "О рекламе",
+      url: "https://www.consultant.ru/document/cons_doc_LAW_58968/",
+      description: "Требования к рекламному контенту, ограничения на рекламу отдельных товаров",
+    },
+    {
+      number: "149-ФЗ",
+      title: "Об информации, информационных технологиях и о защите информации",
+      url: "https://www.consultant.ru/document/cons_doc_LAW_61798/",
+      description: "Общие требования к распространению информации в РФ",
+    },
+  ];
+
+  return (
+    <section className="py-24 px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight">
+            Нормативная база
+          </h2>
+          <p className="mt-4 text-gray-500 max-w-lg mx-auto">
+            Анализ проводится на соответствие ключевым федеральным законам РФ
+            в&nbsp;области регулирования контента
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-4">
+          {laws.map((law) => (
+            <a
+              key={law.number}
+              href={law.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:border-blue-200 hover:bg-blue-50/30 transition-colors"
+            >
+              <div className="shrink-0 w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
+                <Scale className="w-4 h-4" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-sm font-semibold text-gray-900">
+                    {law.number}
+                  </span>
+                  <ExternalLink className="w-3.5 h-3.5 text-gray-300 group-hover:text-blue-400 transition-colors" />
+                </div>
+                <p className="text-sm text-gray-700 leading-snug mb-1">
+                  {law.title}
+                </p>
+                <p className="text-xs text-gray-400">{law.description}</p>
+              </div>
+            </a>
           ))}
         </div>
       </div>
@@ -751,15 +825,31 @@ function CTA() {
 function Footer() {
   return (
     <footer className="border-t border-gray-100 py-12 px-6">
-      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-3">
-          <Logo />
-          <span className="text-sm text-gray-400">
-            AI-анализ видеоконтента
-          </span>
+      <div className="max-w-5xl mx-auto">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8 mb-8">
+          <div className="flex items-center gap-3">
+            <Logo />
+            <span className="text-sm text-gray-400">
+              AI-анализ видеоконтента
+            </span>
+          </div>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 text-sm text-gray-500">
+            <a href="#how" className="hover:text-gray-900 transition-colors">Как работает</a>
+            <a href="#comparison" className="hover:text-gray-900 transition-colors">Сравнение</a>
+            <a href="#pricing" className="hover:text-gray-900 transition-colors">Стоимость</a>
+            <a href="#cta" className="hover:text-gray-900 transition-colors">Оставить заявку</a>
+          </div>
         </div>
-        <div className="text-sm text-gray-400">
-          {new Date().getFullYear()} фреймчек. Все права защищены.
+        <div className="border-t border-gray-100 pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="text-sm text-gray-400">
+            © {new Date().getFullYear()} фреймчек. Все права защищены.
+          </div>
+          <a
+            href="mailto:info@фреймчек.рф"
+            className="text-sm text-gray-400 hover:text-gray-600 transition-colors"
+          >
+            info@фреймчек.рф
+          </a>
         </div>
       </div>
     </footer>
@@ -774,6 +864,7 @@ export default function LandingPage() {
       <Stats />
       <HowItWorks />
       <RiskCategories />
+      <LegalBasis />
       <Comparison />
       <Pricing />
       <Calculator />
