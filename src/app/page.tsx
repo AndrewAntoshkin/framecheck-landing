@@ -392,9 +392,9 @@ function RiskCategories() {
             >
               <Shield className="w-4 h-4 text-blue-500 shrink-0" />
               <span className="text-sm text-gray-700">{cat.name}</span>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg max-w-[220px] text-center leading-relaxed opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none z-10">
+              <div className="absolute bottom-full left-0 mb-2 px-4 py-2.5 bg-gray-900 text-white text-xs rounded-lg w-[280px] text-left leading-relaxed opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none z-10">
                 {cat.tip}
-                <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900" />
+                <div className="absolute top-full left-6 border-4 border-transparent border-t-gray-900" />
               </div>
             </div>
           ))}
