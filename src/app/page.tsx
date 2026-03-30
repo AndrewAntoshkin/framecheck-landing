@@ -89,7 +89,7 @@ function Hero() {
       <div className="max-w-3xl mx-auto text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 text-xs text-blue-600 mb-8">
           <Zap className="w-3.5 h-3.5" />
-          Анализ 1 часа видео за 5 минут
+          Анализ 1 часа видео за ~5 минут
         </div>
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-gray-900 leading-[1.1]">
           Автоматическая проверка
@@ -133,7 +133,7 @@ function Hero() {
 
 function Stats() {
   const stats = [
-    { value: "5 мин", label: "на час видео" },
+    { value: "~5 мин", label: "на час видео" },
     { value: "12+", label: "категорий рисков" },
     { value: "24/7", label: "без выходных" },
     { value: "×50", label: "быстрее человека" },
@@ -482,7 +482,7 @@ function LegalBasis() {
 
 function Comparison() {
   const rows = [
-    { feature: "Время на 1 час видео", manual: "3–5 часов", ai: "5 минут" },
+    { feature: "Время на 1 час видео", manual: "3–5 часов", ai: "~5 минут" },
     {
       feature: "Стоимость за 1 час видео",
       manual: "8 000 – 15 000 ₽",
