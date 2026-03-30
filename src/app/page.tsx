@@ -4,7 +4,6 @@ import {
   Upload,
   Brain,
   FileText,
-  Clock,
   Zap,
   Shield,
   CheckCircle2,
@@ -12,8 +11,20 @@ import {
   Play,
   ArrowRight,
   ChevronRight,
+  Building2,
+  Tv,
+  Film,
+  Archive,
+  Send,
+  Lock,
+  Server,
+  Trash2,
+  Eye,
+  Layers,
+  ListChecks,
+  Filter,
   ExternalLink,
-  Scale,
+  Scale as ScaleIcon,
 } from "lucide-react";
 import { ContactForm } from "@/components/landing/contact-form";
 
@@ -41,7 +52,10 @@ function Nav() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Logo />
-        <div className="hidden sm:flex items-center gap-8 text-sm text-gray-500">
+        <div className="hidden md:flex items-center gap-8 text-sm text-gray-500">
+          <a href="#audience" className="hover:text-gray-900 transition-colors">
+            Кому подходит
+          </a>
           <a href="#how" className="hover:text-gray-900 transition-colors">
             Как работает
           </a>
@@ -53,6 +67,9 @@ function Nav() {
           </a>
           <a href="#pricing" className="hover:text-gray-900 transition-colors">
             Стоимость
+          </a>
+          <a href="#security" className="hover:text-gray-900 transition-colors">
+            Безопасность
           </a>
         </div>
         <a
@@ -75,14 +92,19 @@ function Hero() {
           Анализ 1 часа видео за 5 минут
         </div>
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-gray-900 leading-[1.1]">
-          AI-проверка видео
+          Автоматическая проверка
           <br />
-          <span className="text-blue-400">на&nbsp;соответствие закону</span>
+          видеоконтента{" "}
+          <span className="text-blue-400">
+            на&nbsp;соответствие
+            <br />
+            законодательству РФ
+          </span>
         </h1>
         <p className="mt-6 text-lg text-gray-500 max-w-xl mx-auto leading-relaxed">
-          Автоматический анализ каждой сцены на наркотики, оружие, насилие,
-          нецензурную лексику и другие нарушения. Детальный отчёт
-          с&nbsp;таймкодами и&nbsp;рекомендациями.
+          Детальный отчёт по сценам с&nbsp;таймкодами и&nbsp;уровнями риска.
+          Первичная проверка перед финальной экспертизой — быстрее, точнее
+          и&nbsp;дешевле ручной работы.
         </p>
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
@@ -100,6 +122,10 @@ function Hero() {
             <ChevronRight className="w-4 h-4" />
           </a>
         </div>
+        <p className="mt-6 text-xs text-gray-400 max-w-md mx-auto">
+          Сервис не заменяет юридическую экспертизу, а&nbsp;ускоряет поиск
+          потенциально проблемных фрагментов
+        </p>
       </div>
     </section>
   );
@@ -134,6 +160,81 @@ function Stats() {
   );
 }
 
+function TargetAudience() {
+  const audiences = [
+    {
+      icon: Tv,
+      title: "ТВ-каналы",
+      description: "Проверка эфирного контента перед выходом в сетку вещания",
+    },
+    {
+      icon: Play,
+      title: "Онлайн-кинотеатры",
+      description: "Анализ каталога перед загрузкой на платформу",
+    },
+    {
+      icon: Film,
+      title: "Продакшн-студии",
+      description:
+        "Контроль контента на этапе постпродакшена до сдачи заказчику",
+    },
+    {
+      icon: Send,
+      title: "Дистрибьюторы контента",
+      description:
+        "Проверка закупленного контента перед перепродажей и лицензированием",
+    },
+    {
+      icon: Archive,
+      title: "Архивы и медиабиблиотеки",
+      description:
+        "Массовый анализ архивного фонда для классификации и маркировки",
+    },
+    {
+      icon: Building2,
+      title: "Рекламные агентства",
+      description:
+        "Проверка рекламных роликов на соответствие требованиям площадок",
+    },
+  ];
+
+  return (
+    <section id="audience" className="py-24 px-6 bg-gray-50/80">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight">
+            Кому подходит
+          </h2>
+          <p className="mt-4 text-gray-500 max-w-lg mx-auto">
+            Для компаний, которые работают с видеоконтентом и&nbsp;несут
+            ответственность за его соответствие законодательству
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {audiences.map((item) => (
+            <div
+              key={item.title}
+              className="bg-white rounded-2xl p-6 border border-gray-100 flex gap-4"
+            >
+              <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                <item.icon className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="font-medium text-gray-900 mb-1">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function HowItWorks() {
   const steps = [
     {
@@ -157,7 +258,7 @@ function HowItWorks() {
   ];
 
   return (
-    <section id="how" className="py-24 px-6 bg-gray-50/80">
+    <section id="how" className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight">
@@ -182,6 +283,69 @@ function HowItWorks() {
                   {step.description}
                 </p>
               </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function UseCases() {
+  const cases = [
+    {
+      icon: Eye,
+      title: "Проверка перед выпуском в эфир",
+      description:
+        "Быстрый скрининг готового выпуска или серии перед размещением в сетке вещания или на платформе",
+    },
+    {
+      icon: Layers,
+      title: "Анализ каталога при загрузке",
+      description:
+        "Пакетная проверка библиотеки контента перед публикацией на стриминговой платформе или в архиве",
+    },
+    {
+      icon: ListChecks,
+      title: "Контроль контента от подрядчиков",
+      description:
+        "Автоматическая проверка материалов, поступающих от внешних продакшенов и поставщиков",
+    },
+    {
+      icon: Filter,
+      title: "Первичная фильтрация перед экспертизой",
+      description:
+        "Предварительный отсев проблемного контента, чтобы эксперт сфокусировался на действительно сложных случаях",
+    },
+  ];
+
+  return (
+    <section className="py-24 px-6 bg-gray-50/80">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight">
+            Как использовать в работе
+          </h2>
+          <p className="mt-4 text-gray-500 max-w-lg mx-auto">
+            фреймчек встраивается в&nbsp;существующие процессы компании
+            как&nbsp;этап автоматической предварительной проверки
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-6">
+          {cases.map((item) => (
+            <div
+              key={item.title}
+              className="bg-white rounded-2xl p-8 border border-gray-100"
+            >
+              <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5">
+                <item.icon className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">
+                {item.title}
+              </h3>
+              <p className="text-sm text-gray-500 leading-relaxed">
+                {item.description}
+              </p>
             </div>
           ))}
         </div>
@@ -238,9 +402,11 @@ function LegalBasis() {
   const laws = [
     {
       number: "436-ФЗ",
-      title: "О защите детей от информации, причиняющей вред их здоровью и развитию",
+      title:
+        "О защите детей от информации, причиняющей вред их здоровью и развитию",
       url: "https://www.consultant.ru/document/cons_doc_LAW_108808/",
-      description: "Возрастная маркировка, ограничения на контент для несовершеннолетних",
+      description:
+        "Возрастная маркировка, ограничения на контент для несовершеннолетних",
     },
     {
       number: "114-ФЗ",
@@ -252,18 +418,20 @@ function LegalBasis() {
       number: "38-ФЗ",
       title: "О рекламе",
       url: "https://www.consultant.ru/document/cons_doc_LAW_58968/",
-      description: "Требования к рекламному контенту, ограничения на рекламу отдельных товаров",
+      description:
+        "Требования к рекламному контенту, ограничения на рекламу отдельных товаров",
     },
     {
       number: "149-ФЗ",
       title: "Об информации, информационных технологиях и о защите информации",
       url: "https://www.consultant.ru/document/cons_doc_LAW_61798/",
-      description: "Общие требования к распространению информации в РФ",
+      description:
+        "Общие требования к распространению информации в РФ",
     },
   ];
 
   return (
-    <section className="py-24 px-6">
+    <section className="py-24 px-6 bg-gray-50/80">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight">
@@ -281,10 +449,10 @@ function LegalBasis() {
               href={law.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:border-blue-200 hover:bg-blue-50/30 transition-colors"
+              className="group flex gap-4 p-5 rounded-2xl bg-white border border-gray-100 hover:border-blue-200 hover:bg-blue-50/30 transition-colors"
             >
               <div className="shrink-0 w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
-                <Scale className="w-4 h-4" />
+                <ScaleIcon className="w-4 h-4" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
@@ -351,7 +519,7 @@ function Comparison() {
   ];
 
   return (
-    <section id="comparison" className="py-24 px-6 bg-gray-50/80">
+    <section id="comparison" className="py-24 px-6">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight">
@@ -409,16 +577,62 @@ function Comparison() {
   );
 }
 
+function ScaleSection() {
+  return (
+    <section className="py-24 px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-10 sm:p-14">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight">
+                Подходит для больших
+                <br />
+                объёмов контента
+              </h2>
+              <p className="mt-4 text-gray-400 leading-relaxed">
+                фреймчек спроектирован для обработки масштабных библиотек
+                видеоконтента. Загружайте десятки и сотни часов — система
+                справится.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { value: "100+", label: "часов видео в сутки" },
+                { value: "24/7", label: "без перерывов" },
+                { value: "∞", label: "пакетная загрузка" },
+                { value: "API", label: "для интеграций" },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="bg-white/5 backdrop-blur rounded-2xl p-5 text-center border border-white/10"
+                >
+                  <div className="text-2xl font-semibold text-white">
+                    {item.value}
+                  </div>
+                  <div className="mt-1 text-sm text-gray-400">
+                    {item.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Pricing() {
   return (
-    <section id="pricing" className="py-24 px-6">
+    <section id="pricing" className="py-24 px-6 bg-gray-50/80">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight">
             Стоимость
           </h2>
           <p className="mt-4 text-gray-500 max-w-lg mx-auto">
-            Прозрачная оплата за объём видео. Чем больше — тем выгоднее.
+            Прозрачная оплата за объём видео. Используется как этап первичной
+            проверки перед финальной экспертизой.
           </p>
         </div>
 
@@ -460,6 +674,7 @@ function Pricing() {
               "API-доступ",
               "Кастомные категории рисков",
               "SLA и выделенная поддержка",
+              "Пакетная загрузка и очереди",
             ]}
           />
         </div>
@@ -574,7 +789,7 @@ function Calculator() {
   ];
 
   return (
-    <section className="py-24 px-6 bg-gray-50/80">
+    <section className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight">
@@ -645,7 +860,10 @@ function Calculator() {
                       (1 -
                         parseInt(ex.aiCost.replace(/\s/g, "")) /
                           parseInt(
-                            ex.manualCost.split("–")[1]?.trim().replace(/\s/g, "") ||
+                            ex.manualCost
+                              .split("–")[1]
+                              ?.trim()
+                              .replace(/\s/g, "") ||
                               ex.manualCost.replace(/\s/g, "")
                           )) *
                         100
@@ -688,7 +906,7 @@ function Calculator() {
 
 function Report() {
   return (
-    <section className="py-24 px-6">
+    <section className="py-24 px-6 bg-gray-50/80">
       <div className="max-w-5xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
@@ -803,6 +1021,69 @@ function Report() {
   );
 }
 
+function Security() {
+  const items = [
+    {
+      icon: Lock,
+      title: "Видео не передаётся третьим лицам",
+      description:
+        "Контент обрабатывается исключительно для анализа и не используется для обучения моделей или иных целей",
+    },
+    {
+      icon: Server,
+      title: "Защищённая инфраструктура",
+      description:
+        "Обработка на изолированных серверах с шифрованием данных при передаче и хранении",
+    },
+    {
+      icon: Trash2,
+      title: "Удаление данных по запросу",
+      description:
+        "Вы можете запросить полное удаление загруженных материалов и результатов анализа в любой момент",
+    },
+    {
+      icon: Eye,
+      title: "Работа с закрытым контентом",
+      description:
+        "Поддерживаем работу с невыпущенным и конфиденциальным контентом в рамках NDA",
+    },
+  ];
+
+  return (
+    <section id="security" className="py-24 px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight">
+            Безопасность и&nbsp;конфиденциальность
+          </h2>
+          <p className="mt-4 text-gray-500 max-w-lg mx-auto">
+            Мы понимаем, что вы работаете с ценным и часто ещё не выпущенным
+            контентом. Безопасность данных — наш приоритет.
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-6">
+          {items.map((item) => (
+            <div
+              key={item.title}
+              className="bg-white rounded-2xl p-8 border border-gray-100"
+            >
+              <div className="w-10 h-10 rounded-xl bg-green-50 text-green-600 flex items-center justify-center mb-5">
+                <item.icon className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">
+                {item.title}
+              </h3>
+              <p className="text-sm text-gray-500 leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function CTA() {
   return (
     <section id="cta" className="py-24 px-6">
@@ -834,10 +1115,10 @@ function Footer() {
             </span>
           </div>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 text-sm text-gray-500">
+            <a href="#audience" className="hover:text-gray-900 transition-colors">Кому подходит</a>
             <a href="#how" className="hover:text-gray-900 transition-colors">Как работает</a>
-            <a href="#comparison" className="hover:text-gray-900 transition-colors">Сравнение</a>
             <a href="#pricing" className="hover:text-gray-900 transition-colors">Стоимость</a>
-            <a href="#cta" className="hover:text-gray-900 transition-colors">Оставить заявку</a>
+            <a href="#security" className="hover:text-gray-900 transition-colors">Безопасность</a>
           </div>
         </div>
         <div className="border-t border-gray-100 pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -862,13 +1143,17 @@ export default function LandingPage() {
       <Nav />
       <Hero />
       <Stats />
+      <TargetAudience />
       <HowItWorks />
+      <UseCases />
       <RiskCategories />
       <LegalBasis />
       <Comparison />
+      <ScaleSection />
       <Pricing />
       <Calculator />
       <Report />
+      <Security />
       <CTA />
       <Footer />
     </div>
