@@ -91,7 +91,7 @@ function Hero() {
           <Zap className="w-3.5 h-3.5" />
           Анализ 1 часа видео за ~5 минут
         </div>
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-gray-900 leading-[1.1]">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 leading-[1.1]">
           Автоматическая проверка
           <br />
           видеоконтента{" "}
