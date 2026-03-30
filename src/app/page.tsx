@@ -356,6 +356,7 @@ function UseCases() {
 
 function RiskCategories() {
   const categories = [
+    "Иноагенты и их контент",
     "Наркотики и наркотические средства",
     "Оружие и боеприпасы",
     "Насилие и жестокость",
@@ -420,6 +421,13 @@ function LegalBasis() {
       url: "https://www.consultant.ru/document/cons_doc_LAW_58968/",
       description:
         "Требования к рекламному контенту, ограничения на рекламу отдельных товаров",
+    },
+    {
+      number: "255-ФЗ",
+      title: "О контроле за деятельностью лиц, находящихся под иностранным влиянием",
+      url: "https://www.consultant.ru/document/cons_doc_LAW_421788/",
+      description:
+        "Маркировка контента иноагентов, требования к распространителям",
     },
     {
       number: "149-ФЗ",
@@ -1084,6 +1092,71 @@ function Security() {
   );
 }
 
+function ForeignAgents() {
+  return (
+    <section className="py-24 px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-3xl p-10 sm:p-14 overflow-hidden relative">
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 text-xs text-white mb-6">
+              <Shield className="w-3.5 h-3.5" />
+              Ключевая проверка для медиарынка
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight max-w-2xl">
+              Проверка контента
+              <br />
+              на&nbsp;связь с&nbsp;иноагентами
+            </h2>
+            <p className="mt-4 text-blue-100 max-w-xl leading-relaxed">
+              По закону 255-ФЗ материалы иноагентов должны сопровождаться
+              специальной маркировкой. фреймчек автоматически проверяет
+              видеоконтент на&nbsp;наличие материалов и&nbsp;упоминаний лиц,
+              включённых в&nbsp;реестр иностранных агентов Минюста РФ.
+            </p>
+            <div className="mt-8 grid sm:grid-cols-3 gap-4">
+              {[
+                {
+                  title: "Реестр Минюста",
+                  text: "Автоматическая сверка с актуальным реестром иностранных агентов",
+                },
+                {
+                  title: "Упоминания и цитаты",
+                  text: "Обнаружение цитирования, демонстрации и упоминания контента иноагентов",
+                },
+                {
+                  title: "Рекомендации по маркировке",
+                  text: "Указание, где и как разместить обязательную маркировку согласно закону",
+                },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/10"
+                >
+                  <h3 className="text-sm font-semibold text-white mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-blue-100 leading-relaxed">
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8">
+              <a
+                href="#cta"
+                className="inline-flex items-center gap-2 bg-white text-blue-600 px-7 py-3.5 rounded-xl text-sm font-medium hover:bg-blue-50 transition-colors"
+              >
+                Оставить заявку
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function CTA() {
   return (
     <section id="cta" className="py-24 px-6">
@@ -1154,6 +1227,7 @@ export default function LandingPage() {
       <Calculator />
       <Report />
       <Security />
+      <ForeignAgents />
       <CTA />
       <Footer />
     </div>
