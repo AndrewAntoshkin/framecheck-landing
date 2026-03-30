@@ -1,8 +1,11 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.GITHUB_ACTIONS === "true";
+
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: process.env.GITHUB_ACTIONS ? "/framecheck-landing" : "",
+  basePath: isProd ? "/framecheck-landing" : "",
+  assetPrefix: isProd ? "/framecheck-landing/" : undefined,
   images: { unoptimized: true },
 };
 
