@@ -356,19 +356,19 @@ function UseCases() {
 
 function RiskCategories() {
   const categories = [
-    "Контент иноагентов",
-    "Наркотики и наркотические средства",
-    "Оружие и боеприпасы",
-    "Насилие и жестокость",
-    "Сексуальный контент",
-    "Нецензурная лексика",
-    "Экстремизм и терроризм",
-    "Алкоголь и табак",
-    "Опасное поведение",
-    "Дискриминация",
-    "Суицид и самоповреждение",
-    "Азартные игры",
-    "Персональные данные",
+    { name: "Контент иноагентов", tip: "Упоминания, цитаты и музыка лиц, признанных иностранными агентами" },
+    { name: "Наркотики и наркотические средства", tip: "Демонстрация, употребление или пропаганда наркотических веществ" },
+    { name: "Оружие и боеприпасы", tip: "Показ оружия, инструкции по изготовлению или применению" },
+    { name: "Насилие и жестокость", tip: "Сцены физического насилия, избиений, пыток" },
+    { name: "Сексуальный контент", tip: "Откровенные сцены, порнографический контент, эротика" },
+    { name: "Нецензурная лексика", tip: "Матерные слова и выражения в диалогах и текстах" },
+    { name: "Экстремизм и терроризм", tip: "Призывы к экстремизму, оправдание терроризма, запрещённые организации" },
+    { name: "Алкоголь и табак", tip: "Реклама или демонстрация употребления алкоголя и табачных изделий" },
+    { name: "Опасное поведение", tip: "Трюки, челленджи, действия, угрожающие жизни и здоровью" },
+    { name: "Дискриминация", tip: "Унижение по расовому, национальному, гендерному или иному признаку" },
+    { name: "Суицид и самоповреждение", tip: "Демонстрация или пропаганда суицида и самоповреждений" },
+    { name: "Азартные игры", tip: "Реклама казино, ставок и иных азартных игр" },
+    { name: "Персональные данные", tip: "Номера телефонов, адреса, документы и другие ПДн в кадре" },
   ];
 
   return (
@@ -386,11 +386,16 @@ function RiskCategories() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {categories.map((cat) => (
             <div
-              key={cat}
-              className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gray-50 border border-gray-100"
+              key={cat.name}
+              title={cat.tip}
+              className="group relative flex items-center gap-3 px-4 py-3 rounded-xl bg-gray-50 border border-gray-100 hover:bg-blue-50 hover:border-blue-200 transition-colors cursor-default"
             >
               <Shield className="w-4 h-4 text-blue-500 shrink-0" />
-              <span className="text-sm text-gray-700">{cat}</span>
+              <span className="text-sm text-gray-700">{cat.name}</span>
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg max-w-[220px] text-center leading-relaxed opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none z-10">
+                {cat.tip}
+                <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900" />
+              </div>
             </div>
           ))}
         </div>
