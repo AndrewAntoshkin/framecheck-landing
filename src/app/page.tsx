@@ -22,15 +22,14 @@ export const metadata: Metadata = {
 };
 
 function Logo() {
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={`${basePath}/logo.png`}
+    <Image
+      src="/logo.png"
       alt="фреймчек"
       width={98}
       height={20}
       className="h-5 w-auto"
+      priority
     />
   );
 }
